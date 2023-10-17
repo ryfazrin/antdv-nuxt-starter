@@ -3,7 +3,7 @@
 import { h } from 'vue'
 
 // antd
-import { Button, type ButtonProps } from 'ant-design-vue'
+import { type ButtonProps } from 'ant-design-vue'
 import {
   DownloadOutlined,
   FilterOutlined,
@@ -60,7 +60,7 @@ const theme = {
 </script>
 
 <template>
-  <Button
+  <a-button
     v-bind="props"
     :class="[$attrs.class, theme.customClass]"
     :icon="theme.icon"
@@ -69,7 +69,7 @@ const theme = {
     <template v-if="typeButton !== 'filter'">
       <slot />
     </template>
-  </Button>
+  </a-button>
 </template>
 
 <style lang="scss" scoped>
