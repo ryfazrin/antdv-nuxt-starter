@@ -10,6 +10,13 @@ export default defineNuxtConfig({
       ],
     },
   },
+  imports: {
+    // Auto-import shared/components defined in `~/shared/components`
+    dirs: [
+      'shared/components',
+      'shared/styles',
+    ],
+  },
   modules: [
     '@nuxtjs/color-mode',
     // '@pinia/nuxt',
