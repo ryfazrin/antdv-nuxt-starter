@@ -11,6 +11,8 @@ import {
   SearchOutlined,
 } from '@ant-design/icons-vue'
 
+import { COLORS, type ColorType } from '~/shared/styles/color'
+
 interface CustomButtonProps {
   typeButton?:
   | 'primary'

@@ -14,7 +14,6 @@ export default defineNuxtConfig({
     // Auto-import shared/components defined in `~/shared/components`
     dirs: [
       'shared/components',
-      'shared/styles',
     ],
   },
   modules: [
