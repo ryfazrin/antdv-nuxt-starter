@@ -1,4 +1,6 @@
-<script setup lang="ts">
+<script lang="ts" setup>
+import { message } from 'ant-design-vue'
+
 const checked = shallowRef(true)
 const handleClick = () => {
   message.info('test')
@@ -106,6 +108,7 @@ const handleOk = (e: MouseEvent) => {
     <a-button @click="handleClick">
       按钮
     </a-button>
+    <CustomButton>CustomButton from vue</CustomButton>
     <a-switch v-model:checked="checked" />
 
     <a-table :columns="columns" :data-source="data">
