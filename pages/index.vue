@@ -1,27 +1,39 @@
 <script lang="ts" setup>
+import Dashboard from '~/features/dashboard/ui/index.vue'
 </script>
 
 <template>
-  <div>
-    <CustomCard body-padding="10px" style="width: 500px;">
-      <template #cover>
-        <img
-          alt="example"
-          src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-        />
-      </template>
-      <template #actions>
-        <setting-outlined key="setting" />
-        <edit-outlined key="edit" />
-        <ellipsis-outlined key="ellipsis" />
-      </template>
-      <a-card-meta title="Card title" description="This is the description">
-        <template #avatar>
-          <a-avatar src="https://joeschmoe.io/api/v1/random" />
-        </template>
-      </a-card-meta>
+  <a-space direction="vertical" :size="20" class="flex">
+    <a-space
+      direction="horizontal"
+      align="center"
+      style="
+        display: flex;
+        justify-content: space-between;
+        padding: 15px 0px;
+      "
+    >
+      <a-space
+        direction="vertical"
+        :size="8"
+      >
+        <a-typography-title :level="3" style="margin: 0">Dashboard</a-typography-title>
+        <a-typography-text>Kamu bisa menambahkan data user dengan cara klik tambah</a-typography-text>
+      </a-space>
+      <a-space
+        direction="horizontal"
+        :size="12"
+      >
+        <CustomButton
+          type-button="add"
+        >
+          New
+        </CustomButton>
+      </a-space>
+    </a-space>
+    <!-- Dashboard component -->
+    <CustomCard>
+      <Dashboard />
     </CustomCard>
-    <CustomChip>test</CustomChip>
-    <CustomButton>Hai</CustomButton>
-  </div>
+  </a-space>
 </template>
