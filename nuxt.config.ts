@@ -10,7 +10,7 @@ export default defineNuxtConfig({
       ],
     },
   },
-  imports: {
+  components: {
     // Auto-import shared/components defined in `~/shared/components`
     dirs: [
       'shared/components',

@@ -1,12 +1,9 @@
 <script lang="ts" setup>
-import CustomButton from '~/shared/components/CustomButton.vue'
-import CustomCard from '~/shared/components/CustomCard.vue'
-import CustomChip from '~/shared/components/CustomChip.vue'
 </script>
 
 <template>
   <div>
-    <CustomCard body-padding="10px">
+    <CustomCard body-padding="10px" style="width: 500px;">
       <template #cover>
         <img
           alt="example"
