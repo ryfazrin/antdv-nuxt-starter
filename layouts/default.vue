@@ -27,13 +27,24 @@ const openKeys = ref<string[]>(['sub1'])
           :style="{ height: '100%', borderRight: 0 }"
         >
           <a-menu-item key="dashboard">
-            <nuxt-link href="/"><user-outlined /> Dashboard</nuxt-link>
+            <nuxt-link href="/">
+              <user-outlined /> Dashboard
+            </nuxt-link>
+          </a-menu-item>
+          <a-menu-item key="basicQuery">
+            <nuxt-link href="/basic-query">
+              <user-outlined /> Basic Query
+            </nuxt-link>
           </a-menu-item>
           <a-menu-item key="about">
-            <nuxt-link href="/about"><user-outlined /> About</nuxt-link>
+            <nuxt-link href="/about">
+              <user-outlined /> About
+            </nuxt-link>
           </a-menu-item>
           <a-menu-item key="customAntd">
-            <nuxt-link href="/custom-antd"><user-outlined /> Custom Antd</nuxt-link>
+            <nuxt-link href="/custom-antd">
+              <user-outlined /> Custom Antd
+            </nuxt-link>
           </a-menu-item>
           <a-sub-menu key="sub1">
             <template #title>
