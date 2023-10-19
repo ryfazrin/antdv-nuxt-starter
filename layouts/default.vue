@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-const selectedKeys1 = ref<string[]>(['2'])
-const selectedKeys2 = ref<string[]>(['1'])
+const selectedKeys1 = ref<string[]>(['dashboard'])
 const openKeys = ref<string[]>(['sub1'])
 </script>
 
@@ -21,7 +20,7 @@ const openKeys = ref<string[]>(['sub1'])
       >
         <div class="logo" />
         <a-menu
-          v-model:selectedKeys="selectedKeys2"
+          v-model:selectedKeys="selectedKeys1"
           v-model:openKeys="openKeys"
           mode="inline"
           :style="{ height: '100%', borderRight: 0 }"
