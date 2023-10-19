@@ -31,7 +31,7 @@ import Dashboard from '~/features/dashboard/ui/index.vue'
         </CustomButton>
       </a-space>
     </a-space>
-    <!-- Dashboard component -->
+
     <CustomCard>
       <Dashboard />
     </CustomCard>
