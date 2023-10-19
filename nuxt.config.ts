@@ -22,6 +22,7 @@ export default defineNuxtConfig({
     '@unocss/nuxt',
     '@vueuse/nuxt',
     '@ant-design-vue/nuxt',
+    // '@hebilicious/vue-query-nuxt',
   ],
   css: [
     'ant-design-vue/dist/reset.css',
