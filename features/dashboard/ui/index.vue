@@ -1,8 +1,11 @@
 <script lang="ts" setup>
+import { Button } from 'ant-design-vue'
 import type { ColumnsType } from 'ant-design-vue/es/table'
-import { Button, Popconfirm } from 'ant-design-vue'
-import { DeleteOutlined, EditOutlined } from '@ant-design/icons-vue'
+import { DeleteOutlined, EditOutlined, ExclamationCircleOutlined } from '@ant-design/icons-vue'
 import useGetList from '../composables/useGetList'
+import useDeleteUser from '../composables/useDeleteUser'
+
+const props = defineProps<{ handleOpenModal: (data: any) => void }>()
 
 // Query
 const {
@@ -13,17 +16,25 @@ const {
 
 const { isLoading, data } = fetchQuery
 
-// Func
-const confirm = (e: MouseEvent) => {
-  // eslint-disable-next-line no-console
-  console.log(e)
-  message.success('Click on Yes')
-}
+const { handleOnDelete } = useDeleteUser()
 
-const cancel = (e: MouseEvent) => {
-  // eslint-disable-next-line no-console
-  console.log(e)
-  message.error('Click on No')
+// Func
+const showDeleteConfirm = (id: number) => {
+  Modal.confirm({
+    title: 'Are you sure delete this task?',
+    icon: h(ExclamationCircleOutlined),
+    content: 'Some descriptions',
+    okText: 'Yes',
+    okType: 'danger',
+    cancelText: 'No',
+    onOk() {
+      handleOnDelete(id)
+    },
+    onCancel() {
+      // eslint-disable-next-line no-console
+      console.log('Cancel')
+    },
+  })
 }
 
 // Columns
@@ -33,23 +44,20 @@ const columns: ColumnsType<any> = [
     key: 'action',
     width: '128px',
     customRender({ record }) {
-      return h(
-        'div',
-        [
-          h(
-            Popconfirm,
-            {
-              title: `Are you sure delete this task ${record.first_name}?`,
-              okText: 'Yes',
-              cancelText: 'No',
-              onConfirm: confirm,
-              onCancel: cancel,
-            },
-            h(Button, h(DeleteOutlined)),
-          ),
-          h(Button, h(EditOutlined)),
-        ],
-      )
+      return h('div', [
+        h(Button,
+          {
+            onClick: () => showDeleteConfirm(record.id),
+          },
+          h(DeleteOutlined),
+        ),
+        h(
+          Button, {
+            onClick: () => props.handleOpenModal(record),
+          },
+          h(EditOutlined),
+        ),
+      ])
     },
   },
   {

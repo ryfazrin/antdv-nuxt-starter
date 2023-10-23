@@ -1,16 +1,92 @@
 <script lang="ts" setup>
+import { Form } from 'ant-design-vue'
+import useCreateUser from '~/features/dashboard/composables/useCreateUser'
+import useEditUser from '~/features/dashboard/composables/useEditUser'
 import Dashboard from '~/features/dashboard/ui/index.vue'
+
+const useForm = Form.useForm
+
+const dataTable = ref<any>()
+
+interface FormState {
+  name: string
+  job: string
+}
+
+const formState = ref<FormState>({
+  name: '',
+  job: '',
+})
 
 const modalUser = ref<boolean>(false)
 
-const showModal = () => {
+const showModal = (data?: any) => {
   modalUser.value = true
+
+  if (data) {
+    dataTable.value = data
+
+    formState.value = {
+      name: data.first_name,
+      job: 'Edited job',
+    }
+  }
 }
 
-const handleOk = (e: MouseEvent) => {
-  // eslint-disable-next-line no-console
-  console.log(e)
+const handleCancelModal = () => {
+  dataTable.value = undefined
   modalUser.value = false
+}
+
+/**
+ * FORM
+ */
+
+// Query
+const {
+  handleCreate,
+  // mutationQuery: { isLoading: isLoadingCreate },
+} = useCreateUser()
+
+// Query Edit
+const {
+  handleEdit,
+  // mutationQuery: { isLoading: isLoadingEdit }
+} = useEditUser()
+
+const { resetFields, validate } = useForm(formState)
+
+const handleOnSubmit = (e: MouseEvent) => {
+  validate()
+    .then(() => {
+      if (dataTable) {
+        handleEdit({
+          data: {
+            name: formState.value.name,
+            job: formState.value.job,
+          },
+          id: dataTable.value.id,
+        })
+      }
+      else {
+        handleCreate(formState.value.name, formState.value.job)
+      }
+    })
+    .catch((err: any) => {
+      // eslint-disable-next-line no-console
+      console.log('error', err)
+    })
+  modalUser.value = false
+}
+
+const onFinish = (values: any) => {
+  // eslint-disable-next-line no-console
+  console.log('Success:', values)
+}
+
+const onFinishFailed = (errorInfo: any) => {
+  // eslint-disable-next-line no-console
+  console.log('Failed:', errorInfo)
 }
 </script>
 
@@ -40,7 +116,7 @@ const handleOk = (e: MouseEvent) => {
       >
         <CustomButton
           type-button="add"
-          @click="showModal"
+          @click="() => showModal(undefined)"
         >
           New
         </CustomButton>
@@ -48,17 +124,51 @@ const handleOk = (e: MouseEvent) => {
     </a-space>
 
     <CustomCard>
-      <Dashboard />
+      <Dashboard :handle-open-modal="showModal" />
     </CustomCard>
 
     <a-modal
       v-model:open="modalUser"
-      title="Basic Modal"
-      @ok="handleOk"
+      :title="`${dataTable ? 'Edit' : 'Create New'} User`"
+      :width="700"
+      @ok="handleOnSubmit"
+      @cancel="handleCancelModal"
     >
-      <p>Some contents...</p>
-      <p>Some contents...</p>
-      <p>Some contents...</p>
+      <a-space
+        direction="vertical"
+        :size="0"
+        style="display: flex;"
+      />
+      <a-form
+        :model="formState"
+        name="basic"
+        :label-col="{ span: 4 }"
+        :wrapper-col="{ span: 20 }"
+        autocomplete="off"
+        @finish="onFinish"
+        @finishFailed="onFinishFailed"
+      >
+        <a-form-item
+          label="Name"
+          name="name"
+          :rules="[{ required: true, message: 'Please input your Name!' }]"
+        >
+          <a-input v-model:value="formState.name" />
+        </a-form-item>
+        <a-form-item
+          label="Job"
+          name="job"
+          :rules="[{ required: true, message: 'Please input your Job!' }]"
+        >
+          <a-input v-model:value="formState.job" />
+        </a-form-item>
+
+        <!-- <a-form-item :wrapper-col="{ offset: 8, span: 16 }">
+          <a-button type="primary" html-type="submit">
+            Submit
+          </a-button>
+        </a-form-item> -->
+      </a-form>
     </a-modal>
   </a-space>
 </template>
