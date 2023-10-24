@@ -35,6 +35,10 @@ const showModal = (data?: any) => {
 
 const handleCancelModal = () => {
   dataTable.value = undefined
+  formState.value = {
+    name: '',
+    job: '',
+  }
   modalUser.value = false
 }
 
@@ -59,7 +63,7 @@ const { resetFields, validate } = useForm(formState)
 const handleOnSubmit = (e: MouseEvent) => {
   validate()
     .then(() => {
-      if (dataTable) {
+      if (dataTable.value) {
         handleEdit({
           data: {
             name: formState.value.name,
@@ -71,11 +75,17 @@ const handleOnSubmit = (e: MouseEvent) => {
       else {
         handleCreate(formState.value.name, formState.value.job)
       }
+      dataTable.value = undefined
+      formState.value = {
+        name: '',
+        job: '',
+      }
     })
     .catch((err: any) => {
       // eslint-disable-next-line no-console
       console.log('error', err)
     })
+
   modalUser.value = false
 }
 
