@@ -1,4 +1,4 @@
-import { AUTH_ROUTES, PRIVATE_ROUTES } from '../constants/path'
+import { AUTH_ROUTES, PRIVATE_ROUTES } from '../shared/constants/path'
 
 export const checkIsPrivateRoute = (currentRoute: string): boolean => {
   return Boolean(

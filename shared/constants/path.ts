@@ -1,19 +1,23 @@
 const DASHBOARD_HOME = '/'
-const COLORS = '/colors'
+const BASIC_QUERY = '/basic-query'
+const CUSTOM_ANTD = '/custom-antd'
 const USERS = '/users'
 const DASHBOARD_LOGIN = '/auth/login'
 const DASHBOARD_REGISTER = '/auth/register'
 const DASHBOARD_FORGOT = '/forgot'
 
-const PRIVATE_ROUTES = [DASHBOARD_HOME, USERS, COLORS]
+const PRIVATE_ROUTES = [DASHBOARD_HOME, USERS, BASIC_QUERY, CUSTOM_ANTD]
 const AUTH_ROUTES = [DASHBOARD_LOGIN, DASHBOARD_REGISTER, DASHBOARD_FORGOT]
 
 export {
+  // All route
+  PRIVATE_ROUTES,
+  AUTH_ROUTES,
+  // Single route
   DASHBOARD_HOME,
   DASHBOARD_LOGIN,
   USERS,
-  COLORS,
+  BASIC_QUERY,
+  CUSTOM_ANTD,
   DASHBOARD_REGISTER,
-  PRIVATE_ROUTES,
-  AUTH_ROUTES,
 }
