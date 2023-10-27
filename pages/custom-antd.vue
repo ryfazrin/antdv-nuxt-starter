@@ -29,10 +29,20 @@ const focus = () => {
 const handleChange = (value: SelectValue) => {
   console.log(`selected ${value}`)
 }
+
+const valueInput = ref<string>('')
+watch(valueInput, () => {
+  console.log(valueInput.value)
+})
 </script>
 
 <template>
   <div>
+    <InputFileComponent ref="inputFile1" :disabled="false" :preview="true" />
+    <InputFileComponent ref="inputFile2" :disabled="false" :preview="false" />
+    <InputComponent v-model:value="valueInput" placeholder="Basic usage" />
+    <InputPasswordComponent v-model:value="valueInput" placeholder="Basic usage" />
+    <TextAreaComponent v-model:value="valueInput" placeholder="Basic usage" />
     <SelectComponent
       ref="select"
       v-model:value="value1"
