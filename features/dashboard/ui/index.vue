@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { Button } from 'ant-design-vue'
-import type { ColumnsType } from 'ant-design-vue/es/table'
+import type { ColumnsType, TableProps } from 'ant-design-vue/es/table'
 import { DeleteOutlined, EditOutlined, ExclamationCircleOutlined } from '@ant-design/icons-vue'
 import useGetList from '../composables/useGetList'
 import useDeleteUser from '../composables/useDeleteUser'
@@ -12,6 +12,8 @@ const {
   fetchQuery,
   dataModified,
   handlePageChange,
+  handleChangePageSize,
+  total,
 } = useGetList()
 
 const { isLoading, data } = fetchQuery
@@ -19,6 +21,12 @@ const { isLoading, data } = fetchQuery
 const { handleOnDelete } = useDeleteUser()
 
 // Func
+const onChangeTable: TableProps<any>['onChange'] = (
+  pagination,
+) => {
+  handlePageChange(pagination.current || 1)
+}
+
 const showDeleteConfirm = (id: number) => {
   Modal.confirm({
     title: 'Are you sure delete this task?',
@@ -79,18 +87,15 @@ const columns: ColumnsType<any> = [
 </script>
 
 <template>
-  <a-table
+  <CustomTable
     :loading="isLoading"
     :columns="columns"
     :data-source="dataModified"
-    :pagination="{
-      total: data?.total,
-      pageSize: data?.per_page,
-      onChange(page, pageSize) {
-        handlePageChange(page)
-      },
-    }"
-  >
+    :default-page-size="[6, 10, 12]"
+    :total="total"
+    @change="onChangeTable"
+    @change-page-size="handleChangePageSize"
+  />
     <!-- <template #bodyCell="{ column }">
       <template v-if="column.key === 'action'">
         <a-popconfirm
@@ -109,5 +114,4 @@ const columns: ColumnsType<any> = [
         </a-button>
       </template>
     </template> -->
-  </a-table>
 </template>
