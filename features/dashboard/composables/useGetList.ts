@@ -32,6 +32,7 @@ export default function useGetList() {
   }
 
   const handleChangePageSize = (newPageSize: number) => {
+    // if (newPageSize === total.value) page.value = 1
     per_page.value = newPageSize
   }
 
