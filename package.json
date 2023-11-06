@@ -21,7 +21,8 @@
     "@unocss/nuxt": "^0.53.5",
     "@vueuse/nuxt": "^10.2.1",
     "ant-design-vue": "^4.0.1",
-    "axios": "^1.5.1"
+    "axios": "^1.5.1",
+    "js-cookie": "^3.0.5"
   },
   "devDependencies": {
     "@mistjs/eslint-config-vue": "^0.0.5",
