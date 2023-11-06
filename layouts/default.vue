@@ -1,10 +1,22 @@
 <script lang="ts" setup>
+// import { PFDinTextPro } from '~/shared/font'
 const selectedKeys1 = ref<string[]>(['dashboard'])
 const openKeys = ref<string[]>(['sub1'])
+const PFDinTextPro = '"PFDinTextPro", sans-serif'
 </script>
 
 <template>
-  <a-config-provider>
+  <a-config-provider
+    :theme="{
+      token: {
+        fontFamily: PFDinTextPro,
+        fontSize: 16,
+        lineHeight: 1.5,
+        colorText: '#212121',
+        colorTextSecondary: '#6E6E6E',
+      },
+    }"
+  >
     <a-layout has-sider>
       <a-layout-sider
         class="text-xs"
@@ -98,7 +110,7 @@ const openKeys = ref<string[]>(['sub1'])
   </a-config-provider>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 html {
   --bg-color: #f1f1f1;
 }
@@ -109,6 +121,7 @@ html.dark{
 
 body {
   background-color: var(--bg-color);
+  /* font-family: 'PFDinTextPro', sans-serif; */
 }
 
 .logo {

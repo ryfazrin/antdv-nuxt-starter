@@ -26,6 +26,7 @@ export default defineNuxtConfig({
   ],
   css: [
     'ant-design-vue/dist/reset.css',
+    '@/assets/font.css',
   ],
   colorMode: {
     classSuffix: '',
