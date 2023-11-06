@@ -1,8 +1,9 @@
 <script lang="ts" setup>
+import AntdConfig from '~/shared/styles/AntdConfig.vue'
 </script>
 
 <template>
-  <a-config-provider>
+  <AntdConfig>
     <a-layout>
       <a-layout-content
         :style="{ margin: '24px 16px 0', overflow: 'initial' }"
@@ -10,5 +11,5 @@
         <slot />
       </a-layout-content>
     </a-layout>
-  </a-config-provider>
+  </AntdConfig>
 </template>

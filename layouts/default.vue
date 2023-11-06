@@ -1,22 +1,13 @@
 <script lang="ts" setup>
-// import { PFDinTextPro } from '~/shared/font'
+import AntdConfig from '~/shared/styles/AntdConfig.vue'
+
 const selectedKeys1 = ref<string[]>(['dashboard'])
 const openKeys = ref<string[]>(['sub1'])
 const PFDinTextPro = '"PFDinTextPro", sans-serif'
 </script>
 
 <template>
-  <a-config-provider
-    :theme="{
-      token: {
-        fontFamily: PFDinTextPro,
-        fontSize: 16,
-        lineHeight: 1.5,
-        colorText: '#212121',
-        colorTextSecondary: '#6E6E6E',
-      },
-    }"
-  >
+  <AntdConfig>
     <a-layout has-sider>
       <a-layout-sider
         class="text-xs"
@@ -64,10 +55,18 @@ const PFDinTextPro = '"PFDinTextPro", sans-serif'
                 subnav 1
               </span>
             </template>
-            <a-menu-item key="1">option1</a-menu-item>
-            <a-menu-item key="2">option2</a-menu-item>
-            <a-menu-item key="3">option3</a-menu-item>
-            <a-menu-item key="4">option4</a-menu-item>
+            <a-menu-item key="1">
+              option1
+            </a-menu-item>
+            <a-menu-item key="2">
+              option2
+            </a-menu-item>
+            <a-menu-item key="3">
+              option3
+            </a-menu-item>
+            <a-menu-item key="4">
+              option4
+            </a-menu-item>
           </a-sub-menu>
           <a-sub-menu key="sub2">
             <template #title>
@@ -76,10 +75,18 @@ const PFDinTextPro = '"PFDinTextPro", sans-serif'
                 subnav 2
               </span>
             </template>
-            <a-menu-item key="5">option5</a-menu-item>
-            <a-menu-item key="6">option6</a-menu-item>
-            <a-menu-item key="7">option7</a-menu-item>
-            <a-menu-item key="8">option8</a-menu-item>
+            <a-menu-item key="5">
+              option5
+            </a-menu-item>
+            <a-menu-item key="6">
+              option6
+            </a-menu-item>
+            <a-menu-item key="7">
+              option7
+            </a-menu-item>
+            <a-menu-item key="8">
+              option8
+            </a-menu-item>
           </a-sub-menu>
           <a-sub-menu key="sub3">
             <template #title>
@@ -88,10 +95,18 @@ const PFDinTextPro = '"PFDinTextPro", sans-serif'
                 subnav 3
               </span>
             </template>
-            <a-menu-item key="9">option9</a-menu-item>
-            <a-menu-item key="10">option10</a-menu-item>
-            <a-menu-item key="11">option11</a-menu-item>
-            <a-menu-item key="12">option12</a-menu-item>
+            <a-menu-item key="9">
+              option9
+            </a-menu-item>
+            <a-menu-item key="10">
+              option10
+            </a-menu-item>
+            <a-menu-item key="11">
+              option11
+            </a-menu-item>
+            <a-menu-item key="12">
+              option12
+            </a-menu-item>
           </a-sub-menu>
         </a-menu>
       </a-layout-sider>
@@ -107,40 +122,7 @@ const PFDinTextPro = '"PFDinTextPro", sans-serif'
         </a-layout-footer>
       </a-layout>
     </a-layout>
-  </a-config-provider>
+  </AntdConfig>
 </template>
 
-<style lang="scss">
-html {
-  --bg-color: #f1f1f1;
-}
-html.dark{
-  --bg-color: rgb(42, 44, 44);
-  --bg-header-color: rgb(36, 37, 37);
-}
-
-body {
-  background-color: var(--bg-color);
-  /* font-family: 'PFDinTextPro', sans-serif; */
-}
-
-.logo {
-  height: 32px;
-  margin: 16px;
-  /* background: rgba(255,255,255,.3); */
-  background: rgb(0 21 41);
-}
-
-#components-layout-demo-fixed-sider .logo {
-  height: 32px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 16px;
-}
-.site-layout .site-layout-background {
-  background: #fff;
-}
-
-[data-theme='dark'] .site-layout .site-layout-background {
-  background: #141414;
-}
-</style>
+<style lang="scss"></style>
