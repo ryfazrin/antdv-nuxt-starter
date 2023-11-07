@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "@mistjs/eslint-config-vue": "^0.0.5",
+    "@nuxt/image": "^1.0.0",
     "@types/fs-extra": "^11.0.1",
     "@types/node": "^18.16.19",
     "cross-env": "^7.0.3",
