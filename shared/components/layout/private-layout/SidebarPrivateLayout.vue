@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { theme } from 'ant-design-vue'
 import { DoubleLeftOutlined, DoubleRightOutlined } from '@ant-design/icons-vue'
+import AvatarUserNamePriveLayout from './AvatarUserNamePriveLayout.vue'
 import MenuSideMenuPrivateLayout from './MenuSideMenuPrivateLayout.vue'
 import { COLORS } from '~/shared/styles/color'
 
@@ -81,6 +82,10 @@ const { colorBgContainer } = value
         />
       </span>
     </div>
+
+    <AvatarUserNamePriveLayout :is-sidebar-collapsed="collapsed" />
+
+    <!-- SIDE MENU -->
     <MenuSideMenuPrivateLayout />
   </a-layout-sider>
 </template>
