@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 const selectedKeys1 = ref<string[]>(['dashboard'])
-const openKeys = ref<string[]>(['sub2'])
+const openKeys = ref<string[]>(['sub1'])
 </script>
 
 <template>
@@ -25,25 +25,7 @@ const openKeys = ref<string[]>(['sub2'])
         <SkinOutlined /> Custom Antd
       </nuxt-link>
     </a-menu-item>
-    <a-menu-item key="about">
-      <nuxt-link href="/about">
-        <ProfileOutlined /> About
-      </nuxt-link>
-    </a-menu-item>
-    <a-sub-menu key="sub1">
-      <template #title>
-        <span>
-          <AlertOutlined />
-          Test
-        </span>
-      </template>
-      <a-menu-item key="1">
-        <nuxt-link href="/test/hasil">
-          Hasil
-        </nuxt-link>
-      </a-menu-item>
-    </a-sub-menu>
-    <!-- <a-sub-menu key="sub2">
+    <!-- <a-sub-menu key="sub1">
       <template #title>
         <span>
           <user-outlined />
