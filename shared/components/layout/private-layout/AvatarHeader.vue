@@ -1,4 +1,8 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const {
+  handleSignout,
+} = useLogoutUser()
+</script>
 
 <template>
   <a-dropdown :trigger="['click']">
@@ -40,7 +44,7 @@
                 align-items: center;
                 padding: 5px;
               "
-            @click="() => console.log('test')"
+            @click="() => handleSignout()"
           >
             <LogoutOutlined /> Logout
           </div>
