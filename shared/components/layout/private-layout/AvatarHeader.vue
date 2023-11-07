@@ -27,6 +27,7 @@
               "
             @click="() => console.log('dummy name')"
           >
+            <UserOutlined />
             <a-typography-text>{{ storageCheck('user').email }}</a-typography-text>
           </div>
         </a-menu-item>
@@ -41,7 +42,7 @@
               "
             @click="() => console.log('test')"
           >
-            Logout
+            <LogoutOutlined /> Logout
           </div>
         </a-menu-item>
       </a-menu>
