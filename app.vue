@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import AntdConfig from '~/shared/styles/AntdConfig.vue'
 // const nuxtApp = useNuxtApp()
 const isLoading = ref(true)
 
@@ -22,12 +23,14 @@ setTimeout(() => {
 </script>
 
 <template>
-  <NuxtLayout>
-    <div v-if="isLoading" class="loading-spinner">
-      <a-spin size="large" />
-    </div>
-    <NuxtPage v-else />
-  </NuxtLayout>
+  <AntdConfig>
+    <NuxtLayout>
+      <div v-if="isLoading" class="loading-spinner">
+        <a-spin size="large" />
+      </div>
+      <NuxtPage v-else />
+    </NuxtLayout>
+  </AntdConfig>
 </template>
 
 <style lang="scss">
