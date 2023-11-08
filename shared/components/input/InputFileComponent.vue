@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { InputProps } from 'ant-design-vue'
-import { h } from 'vue'
+import type { VNodeRef } from 'nuxt/dist/app/compat/capi'
 import CustomButton from '../CustomButton.vue'
 
 interface InputFileComponentProps {
@@ -22,12 +22,12 @@ const props = defineProps<InputFileComponentProps & InputProps>()
   >
     <input
       :id="`file-input-form${props.id ? `-${props.id}` : ``}`"
-      :ref="$attrs.ref"
+      :ref="($attrs.ref as VNodeRef)"
       type="file"
       style="display: none;"
       :name="props.name"
       :disabled="props.disabled"
-      :accept="$attrs.accept"
+      :accept="($attrs.accept as string)"
       @change="props.onChange"
       @blur="props.onBlur"
     >
@@ -65,7 +65,7 @@ const props = defineProps<InputFileComponentProps & InputProps>()
       <template v-else>
         <span>
           <a-input
-            :ref="$attrs.ref"
+            :ref="($attrs.ref as VNodeRef)"
             :value="props.value"
             :placeholder="props.placeholder"
             :suffix="h(
