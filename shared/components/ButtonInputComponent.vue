@@ -2,7 +2,7 @@
 import { SearchOutlined } from '@ant-design/icons-vue'
 import { useRoute } from 'vue-router'
 import CustomButton from './CustomButton.vue'
-import InputComponent from './InputComponent.vue'
+import InputComponent from './input/InputComponent.vue'
 import { debounce } from '~/utils/debounce'
 
 export interface ButtonInputComponentProps {

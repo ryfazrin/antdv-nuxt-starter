@@ -3,6 +3,8 @@ import { Form } from 'ant-design-vue'
 import useCreateUser from '~/features/dashboard/composables/useCreateUser'
 import useEditUser from '~/features/dashboard/composables/useEditUser'
 import Dashboard from '~/features/dashboard/ui/index.vue'
+import CustomContainerActionChange from '~/shared/components/organisms/CustomContainerActionChange.vue'
+import MainTitlePage from '~/shared/components/organisms/MainTitlePage.vue'
 
 const useForm = Form.useForm
 
@@ -49,13 +51,13 @@ const handleCancelModal = () => {
 // Query
 const {
   handleCreate,
-  // mutationQuery: { isLoading: isLoadingCreate },
+  mutationQuery: { isLoading: isLoadingCreate },
 } = useCreateUser()
 
 // Query Edit
 const {
   handleEdit,
-  // mutationQuery: { isLoading: isLoadingEdit }
+  mutationQuery: { isLoading: isLoadingEdit },
 } = useEditUser()
 
 const { resetFields, validate } = useForm(formState)
@@ -89,6 +91,14 @@ const handleOnSubmit = (e: MouseEvent) => {
   modalUser.value = false
 }
 
+const handleOnReset = () => {
+  dataTable.value = undefined
+  formState.value = {
+    name: '',
+    job: '',
+  }
+}
+
 const onFinish = (values: any) => {
   // eslint-disable-next-line no-console
   console.log('Success:', values)
@@ -102,36 +112,20 @@ const onFinishFailed = (errorInfo: any) => {
 
 <template>
   <a-space direction="vertical" :size="20" class="flex">
-    <a-space
-      direction="horizontal"
-      align="center"
-      style="
-        display: flex;
-        justify-content: space-between;
-        padding: 15px 0px;
-      "
-    >
-      <a-space
-        direction="vertical"
-        :size="8"
-      >
-        <a-typography-title :level="3" style="margin: 0">
-          Dashboard
-        </a-typography-title>
-        <a-typography-text>Kamu bisa menambahkan data user dengan cara klik tambah</a-typography-text>
-      </a-space>
-      <a-space
-        direction="horizontal"
-        :size="12"
-      >
-        <CustomButton
-          type-button="add"
-          @click="() => showModal(undefined)"
-        >
-          New
-        </CustomButton>
-      </a-space>
-    </a-space>
+    <MainTitlePage
+      :type-title="1"
+      :title1="{
+        title: 'Users',
+        description: 'Kamu bisa menambahkan data user dengan cara klik tambah',
+      }"
+      :search="{
+        onSearch: (e) => console.log(e),
+        placeholder: 'Search User name',
+      }"
+      :filter-status="() => console.log('setStatus state')"
+      :add="() => showModal(undefined)"
+      add-title="New User"
+    />
 
     <CustomCard>
       <Dashboard :handle-open-modal="showModal" />
@@ -141,6 +135,7 @@ const onFinishFailed = (errorInfo: any) => {
       v-model:open="modalUser"
       :title="`${dataTable ? 'Edit' : 'Create New'} User`"
       :width="700"
+      :footer="null"
       @ok="handleOnSubmit"
       @cancel="handleCancelModal"
     >
@@ -178,6 +173,15 @@ const onFinishFailed = (errorInfo: any) => {
             Submit
           </a-button>
         </a-form-item> -->
+        <CustomContainerActionChange
+          text="Kamu bisa menambahkan data disini dengan mengklik save."
+          add-text="save"
+          :add-icon="false"
+          :add-loading="isLoadingCreate || isLoadingEdit"
+          reset-text="Reset"
+          @add="handleOnSubmit"
+          @reset="handleOnReset"
+        />
       </a-form>
     </a-modal>
   </a-space>

@@ -32,6 +32,11 @@ const breadcrumbs = computed(() => {
         />
       </NuxtLink>
     </a-breadcrumb-item>
+    <a-breadcrumb-item v-if="route.path === '/'">
+      <NuxtLink href="/">
+        Dashboard
+      </NuxtLink>
+    </a-breadcrumb-item>
     <a-breadcrumb-item v-for="(breadcrumb, index) in breadcrumbs" :key="index">
       <NuxtLink :href="breadcrumb.path">
         {{ breadcrumb.name }}

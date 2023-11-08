@@ -5,7 +5,7 @@ import CustomChip from '../CustomChip.vue'
 
 interface CustomContainerActionChangeProps {
   text?: string
-  onAdd?: () => void
+  onAdd?: (e: MouseEvent) => void
   addText?: string
   addIcon?: boolean
   addDisable?: boolean

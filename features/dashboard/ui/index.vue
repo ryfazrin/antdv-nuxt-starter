@@ -1,9 +1,8 @@
 <script lang="ts" setup>
-import { Button } from 'ant-design-vue'
 import type { ColumnsType, TableProps } from 'ant-design-vue/es/table'
-import { DeleteOutlined, EditOutlined, ExclamationCircleOutlined } from '@ant-design/icons-vue'
 import useGetList from '../composables/useGetList'
 import useDeleteUser from '../composables/useDeleteUser'
+import ButtonAction from '~/shared/components/ButtonAction.vue'
 
 const props = defineProps<{ handleOpenModal: (data: any) => void }>()
 
@@ -27,24 +26,6 @@ const onChangeTable: TableProps<any>['onChange'] = (
   handlePageChange(pagination.current || 1)
 }
 
-const showDeleteConfirm = (id: number) => {
-  Modal.confirm({
-    title: 'Are you sure delete this task?',
-    icon: h(ExclamationCircleOutlined),
-    content: 'Some descriptions',
-    okText: 'Yes',
-    okType: 'danger',
-    cancelText: 'No',
-    onOk() {
-      handleOnDelete(id)
-    },
-    onCancel() {
-      // eslint-disable-next-line no-console
-      console.log('Cancel')
-    },
-  })
-}
-
 // Columns
 const columns: ColumnsType<any> = [
   {
@@ -52,18 +33,25 @@ const columns: ColumnsType<any> = [
     key: 'action',
     width: '128px',
     customRender({ record }) {
-      return h('div', [
-        h(Button,
+      return h('div', {
+        style: {
+          display: 'flex',
+          justifyContent: 'center',
+          gap: '0.5em',
+        },
+      }, [
+        h(ButtonAction,
           {
-            onClick: () => showDeleteConfirm(record.id),
+            typeAction: 'remove',
+            onDelete: () => handleOnDelete(record.id),
           },
-          h(DeleteOutlined),
         ),
         h(
-          Button, {
+          ButtonAction,
+          {
+            typeAction: 'edit',
             onClick: () => props.handleOpenModal(record),
           },
-          h(EditOutlined),
         ),
       ])
     },
@@ -96,7 +84,7 @@ const columns: ColumnsType<any> = [
     @change="onChangeTable"
     @change-page-size="handleChangePageSize"
   />
-    <!-- <template #bodyCell="{ column }">
+  <!-- <template #bodyCell="{ column }">
       <template v-if="column.key === 'action'">
         <a-popconfirm
           title="Are you sure delete this task?"

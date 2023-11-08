@@ -6,7 +6,6 @@ import {
   ReloadOutlined,
   SettingOutlined,
 } from '@ant-design/icons-vue'
-import { h, ref, watch } from 'vue'
 import CustomButton from './CustomButton.vue'
 import ModalConfirmationDelete from './ModalConfirmationDelete.vue'
 import { COLORS } from '~/shared/styles/color'

@@ -99,7 +99,7 @@ watch(props.pageSizes, (newValue: any) => {
 
     & .ant-table-thead {
       & tr {
-        & td {
+        & th.ant-table-cell-scrollbar {
           display: none;
         }
 
@@ -113,7 +113,7 @@ watch(props.pageSizes, (newValue: any) => {
             border-radius: 30px 0px 0px 30px !important;
           }
 
-          &:last-of-type {
+          &:nth-last-of-type(2) {
             border-radius: 0px 30px 30px 0px !important;
 
             &:before {
@@ -142,11 +142,22 @@ watch(props.pageSizes, (newValue: any) => {
         width: 6px;
         height: 6px;
       }
+
       &::-webkit-scrollbar-thumb {
         background-color: #6e6e6e;
         border-radius: 3px;
       }
+
       &::-webkit-scrollbar-track {
+        background-color: #d9d9d9;
+      }
+
+      &::-webkit-scrollbar-thumb:vertical {
+        background-color: #6e6e6e;
+        border-radius: 3px;
+      }
+
+      &::-webkit-scrollbar-track:vertical {
         background-color: #d9d9d9;
       }
 

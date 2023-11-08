@@ -164,8 +164,8 @@ const { colorTextSecondary } = token.value
 
       <ButtonInputComponent
         v-if="search"
-        :placeholder="typeof search === 'function' ? '' : search?.placeholder"
-        @search="typeof search === 'function' ? search : search?.onSearch"
+        :placeholder="typeof search === 'function' ? '' : search.placeholder"
+        @search="typeof search === 'function' ? () => console.log('tes') : search.onSearch"
       />
 
       <FilterStatusMain
