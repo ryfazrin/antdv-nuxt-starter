@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 // antd
-import type { SelectProps } from 'ant-design-vue'
+// import type { SelectProps } from 'ant-design-vue'
 
 interface SelectComponentProps {
   isBold: boolean
