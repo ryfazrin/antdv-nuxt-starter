@@ -1,0 +1,15 @@
+export const debounce = (func, time = 500) => {
+  let timer
+
+  return function (...args) {
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
+    const context = this
+
+    if (timer) clearTimeout(timer)
+
+    timer = setTimeout(() => {
+      timer = null
+      func.apply(context, args)
+    }, time)
+  }
+}
