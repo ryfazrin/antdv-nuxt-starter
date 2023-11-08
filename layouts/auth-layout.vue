@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import ContentLayoutAuth from '~/shared/components/layout/auth-layout/ContentLayoutAuth.vue'
+import ContentSiderAuth from '~/shared/components/layout/auth-layout/ContentSiderAuth.vue'
 </script>
 
 <template>
@@ -10,7 +11,11 @@ import ContentLayoutAuth from '~/shared/components/layout/auth-layout/ContentLay
       </ContentLayoutAuth>
     </a-layout-content>
 
-    <!-- TODO sider -->
-    <!-- <a-layout-sider :width="640" style="background-color: transparent;"></a-layout-sider> -->
+    <a-layout-sider
+      :width="640"
+      style="background-color: transparent;"
+    >
+      <ContentSiderAuth />
+    </a-layout-sider>
   </a-layout>
 </template>
