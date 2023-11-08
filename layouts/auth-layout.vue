@@ -1,12 +1,16 @@
 <script lang="ts" setup>
+import ContentLayoutAuth from '~/shared/components/layout/auth-layout/ContentLayoutAuth.vue'
 </script>
 
 <template>
   <a-layout>
-    <a-layout-content
-      :style="{ margin: '24px 16px 0', overflow: 'initial' }"
-    >
-      <slot />
+    <a-layout-content>
+      <ContentLayoutAuth>
+        <slot />
+      </ContentLayoutAuth>
     </a-layout-content>
+
+    <!-- TODO sider -->
+    <!-- <a-layout-sider :width="640" style="background-color: transparent;"></a-layout-sider> -->
   </a-layout>
 </template>
