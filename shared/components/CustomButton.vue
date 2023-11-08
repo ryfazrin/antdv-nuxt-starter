@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 // Vue
 import { h } from 'vue'
 
@@ -11,6 +11,7 @@ import {
   SearchOutlined,
 } from '@ant-design/icons-vue'
 
+// Colors
 import { COLORS, type ColorType } from '~/shared/styles/color'
 
 interface CustomButtonProps {
@@ -65,7 +66,7 @@ const theme = {
   <a-button
     v-bind="props"
     :class="[$attrs.class, theme.customClass]"
-    :icon="theme.icon"
+    :icon="props.icon ? props.icon : theme.icon"
   >
     {{ props.typeButton === "filter" ? "Filter" : "" }}
     <template v-if="typeButton !== 'filter'">
