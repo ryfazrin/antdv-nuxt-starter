@@ -49,7 +49,7 @@ const setCollapsed = (newCollapsed: boolean) => {
         <FooterContentPrivateLayout />
       </a-layout-content>
     </a-layout>
-    </a-layout>
+  </a-layout>
 </template>
 
 <style lang="scss"></style>

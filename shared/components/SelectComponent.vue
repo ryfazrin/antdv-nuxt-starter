@@ -40,7 +40,7 @@ const props = withDefaults(
       outline: 1px solid rgba(149, 87, 173, 1) !important;
     }
 
-    & :deep(span) {
+    & span {
       inset-inline-start: 16px !important;
     }
   }

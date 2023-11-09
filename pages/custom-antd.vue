@@ -23,16 +23,16 @@ const options1 = ref<SelectProps['options']>([
   },
 ])
 const focus = () => {
-  console.log('focus')
+  // console.log('focus')
 }
 
 const handleChange = (value: SelectValue) => {
-  console.log(`selected ${value}`)
+  // console.log(`selected ${value}`)
 }
 
 const valueInput = ref<string>('')
 watch(valueInput, () => {
-  console.log(valueInput.value)
+  // console.log(valueInput.value)
 })
 </script>
 
@@ -64,7 +64,7 @@ watch(valueInput, () => {
         <img
           alt="example"
           src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-        />
+        >
       </template>
       <template #actions>
         <setting-outlined key="setting" />

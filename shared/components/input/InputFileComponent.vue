@@ -22,12 +22,12 @@ const props = defineProps<InputFileComponentProps & InputProps>()
   >
     <input
       :id="`file-input-form${props.id ? `-${props.id}` : ``}`"
-      :ref="($attrs.ref as VNodeRef)"
+      :ref="$attrs.ref as VNodeRef"
       type="file"
       style="display: none;"
       :name="props.name"
       :disabled="props.disabled"
-      :accept="($attrs.accept as string)"
+      :accept="$attrs.accept as string"
       @change="props.onChange"
       @blur="props.onBlur"
     >
@@ -65,7 +65,7 @@ const props = defineProps<InputFileComponentProps & InputProps>()
       <template v-else>
         <span>
           <a-input
-            :ref="($attrs.ref as VNodeRef)"
+            :ref="$attrs.ref as VNodeRef"
             :value="props.value"
             :placeholder="props.placeholder"
             :suffix="h(
