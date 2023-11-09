@@ -56,21 +56,21 @@ const token = useCookie<number | null>('token')
         @finish="onFinish"
         @finish-failed="onFinishFailed"
       >
-        <a-form-item
+        <CustomFormItem
           label="Email"
           name="email"
           :rules="[{ required: true, message: 'Please input your email!' }]"
         >
           <a-input v-model:value="formState.email" />
-        </a-form-item>
+        </CustomFormItem>
 
-        <a-form-item
+        <CustomFormItem
           label="Password"
           name="password"
           :rules="[{ required: true, message: 'Please input your password!' }]"
         >
           <a-input-password v-model:value="formState.password" />
-        </a-form-item>
+        </CustomFormItem>
 
         <!-- <a-form-item name="remember" :wrapper-col="{ offset: 8, span: 16 }">
       <a-checkbox v-model:checked="formState.remember">

@@ -147,32 +147,27 @@ const onFinishFailed = (errorInfo: any) => {
       <a-form
         :model="formState"
         name="basic"
-        :label-col="{ span: 4 }"
-        :wrapper-col="{ span: 20 }"
         autocomplete="off"
+        layout="vertical"
         @finish="onFinish"
         @finishFailed="onFinishFailed"
       >
-        <a-form-item
+        <!-- layout="vertical" -->
+        <CustomFormItem
           label="Name"
           name="name"
           :rules="[{ required: true, message: 'Please input your Name!' }]"
         >
           <a-input v-model:value="formState.name" />
-        </a-form-item>
-        <a-form-item
+        </CustomFormItem>
+        <CustomFormItem
           label="Job"
           name="job"
           :rules="[{ required: true, message: 'Please input your Job!' }]"
         >
           <a-input v-model:value="formState.job" />
-        </a-form-item>
+        </CustomFormItem>
 
-        <!-- <a-form-item :wrapper-col="{ offset: 8, span: 16 }">
-          <a-button type="primary" html-type="submit">
-            Submit
-          </a-button>
-        </a-form-item> -->
         <CustomContainerActionChange
           text="Kamu bisa menambahkan data disini dengan mengklik save."
           add-text="save"
