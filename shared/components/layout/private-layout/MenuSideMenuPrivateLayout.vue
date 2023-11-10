@@ -75,14 +75,19 @@ const openKeys = ref<string[]>(['sub1'])
       margin-right: 16px;
     }
 
-    &:not(.ant-menu-item-only-child) {
+    /* &:not(.ant-menu-item-only-child) {
       padding: 8px 16px !important;
-    }
+    } */
   }
 
   & :deep(.ant-menu-submenu.ant-menu-submenu-inline) {
     & .ant-menu-submenu-title {
       min-height: 48px !important;
+      padding-left: 16px !important; /* For remove padding-left: 24px */
+    }
+
+    & .ant-menu {
+      background: transparent;
     }
   }
 
@@ -105,46 +110,52 @@ const openKeys = ref<string[]>(['sub1'])
   }
 
   & :deep(.ant-menu-item-selected),
-  & :deep(.ant-menu-submenu-selected .ant-menu-submenu-title),
+  & :deep(.ant-menu-submenu-selected .ant-menu-submenu-title) {
+    color: #6418c3;
+    background: #666cff0d;
+  }
+
   & :deep(.ant-menu-item-selected .ant-typography),
   & :deep(.ant-menu-submenu-selected .ant-menu-submenu-title .ant-typography) {
     color: #6418c3;
+  }
 
-    /* TODO for child parent menu */
-    &.ant-menu-item-only-child {
-      background: #f8f8f8;
-      border-radius: 35% 0px 0px 35%;
-      padding: 20px 16px !important;
+  & :deep(.ant-menu-item-selected.ant-menu-item-only-child) {
+    &:hover {
+      color: #6418c3;
+      background: #666cff0d;
+    }
+  }
 
-      &:hover {
-        color: #6418c3;
-        background: #666cff0d;
-      }
+  & :deep( > .ant-menu-item-selected.ant-menu-item-only-child),
+  & :deep(.ant-menu-submenu-selected .ant-menu-submenu-title) {
+    background: #f8f8f8;
+    border-radius: 35% 0px 0px 35%;
+    padding: 20px 16px !important;
 
-      &:before {
-        content: ' ';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: calc(100% - 1px);
-        height: 12px;
-        background: #fff;
-        z-index: 20;
-        border-radius: 0px 0px 20px 0px;
-      }
+    &:before {
+      content: ' ';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: calc(100% - 1px);
+      height: 12px;
+      background: #fff;
+      z-index: 20;
+      border-radius: 0px 0px 20px 0px;
+    }
 
-      &:after {
-        content: ' ';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: calc(100% - 1px);
-        height: 12px;
-        background: #fff;
-        z-index: 20;
-        margin-top: 68px;
-        border-radius: 0px 20px 0px 0px;
-      }
+    &:after {
+      content: ' ';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: calc(100% - 1px);
+      height: 12px;
+      background: #fff;
+      z-index: 20;
+      margin-top: 68px;
+      border-radius: 0px 20px 0px 0px;
     }
 
     &.ant-menu-item-only-child .point {
