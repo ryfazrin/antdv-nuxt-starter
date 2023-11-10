@@ -2,7 +2,7 @@ import type { AliasToken } from 'ant-design-vue/es/theme/internal'
 
 export const SelectTheme: Partial<{}> & Partial<AliasToken> = {
   borderRadius: 8,
-  controlHeight: 60,
+  // controlHeight: 60,
   colorBorder: '#E5E5F0',
   colorBgContainer: 'transparent',
   colorTextPlaceholder: '#BABABA',

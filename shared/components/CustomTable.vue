@@ -179,7 +179,7 @@ watch(props.pageSizes, (newValue: any) => {
       }
     }
 
-    & .ant-table-pagination {
+    &.ant-table-pagination {
       position: relative;
       font-size: 14px;
       line-height: 22px;
@@ -194,7 +194,7 @@ watch(props.pageSizes, (newValue: any) => {
           border: none;
           box-shadow: none;
           font-size: 14px;
-          line-height: 22px;
+          /* line-height: 22px; */
 
           &:focus,
           &:hover,
@@ -202,6 +202,14 @@ watch(props.pageSizes, (newValue: any) => {
             border: none !important;
             box-shadow: none !important;
           }
+
+          & .ant-select-selection-item {
+            line-height: 22px;
+          }
+        }
+
+        & .ant-select-arrow {
+          margin-top: -12px;
         }
       }
 
