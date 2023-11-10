@@ -12,39 +12,44 @@ const openKeys = ref<string[]>(['sub1'])
   >
     <a-menu-item key="dashboard">
       <nuxt-link href="/">
-        <HomeOutlined /> Dashboard
+        <HomeOutlined />
+        <a-typography-text>Dashboard</a-typography-text>
       </nuxt-link>
     </a-menu-item>
     <a-menu-item key="basicQuery">
       <nuxt-link href="/basic-query">
-        <ThunderboltOutlined /> Basic Query
+        <ThunderboltOutlined />
+        <a-typography-text>Basic Query</a-typography-text>
       </nuxt-link>
     </a-menu-item>
     <a-menu-item key="customAntd">
       <nuxt-link href="/custom-antd">
-        <SkinOutlined /> Custom Antd
+        <SkinOutlined />
+        <a-typography-text>Custom Antd</a-typography-text>
       </nuxt-link>
     </a-menu-item>
-    <!-- <a-sub-menu key="sub1">
+    <a-sub-menu key="sub1">
       <template #title>
         <span>
           <user-outlined />
-          subnav 1
+          <a-typography-text>Parent</a-typography-text>
         </span>
       </template>
       <a-menu-item key="1">
-        option1
+        <nuxt-link href="/parent/child">
+          <a-typography-text>Child</a-typography-text>
+        </nuxt-link>
       </a-menu-item>
       <a-menu-item key="2">
-        option2
+        <a-typography-text>Child2</a-typography-text>
       </a-menu-item>
       <a-menu-item key="3">
-        option3
+        <a-typography-text>Child3</a-typography-text>
       </a-menu-item>
       <a-menu-item key="4">
-        option4
+        <a-typography-text>Child4</a-typography-text>
       </a-menu-item>
-    </a-sub-menu> -->
+    </a-sub-menu>
   </a-menu>
 </template>
 
@@ -65,7 +70,7 @@ const openKeys = ref<string[]>(['sub1'])
     height: fit-content;
     width: calc(100% + 1px);
 
-    & .ant-menu-title-content {
+    & .ant-menu-title-content .ant-typography {
       margin-inline-start: 16px !important;
       margin-right: 16px;
     }
@@ -75,8 +80,10 @@ const openKeys = ref<string[]>(['sub1'])
     }
   }
 
-  & :deep(.ant-menu-submenu.ant-menu-submenu-inline .ant-menu-submenu-title) {
-    min-height: 48px !important;
+  & :deep(.ant-menu-submenu.ant-menu-submenu-inline) {
+    & .ant-menu-submenu-title {
+      min-height: 48px !important;
+    }
   }
 
   &.ant-menu-root > li.ant-menu-item,
@@ -84,39 +91,65 @@ const openKeys = ref<string[]>(['sub1'])
     padding-block: 4px !important;
   }
 
-  &.ant-menu-inline-collapsed {
-    & :deep(li.ant-menu-item),
-    :deep(.ant-menu-submenu-title),
-    :deep(.ant-menu-item-selected) {
-      padding: 4px 16px !important;
-    }
-
-    & :deep(.ant-menu-item-group-title) {
-      color: #fff;
-      position: relative;
-      height: 10px;
-      margin-top: -5px !important;
-      margin-bottom: 5px !important;
-
-      &:before {
-        content: " ";
-        position: absolute;
-        top: 50%;
-        left: 10px;
-        width: 38px;
-        height: 2px;
-        background: #e2e1e6;
-      }
-    }
-
-    & :deep(li.ant-menu-item-selected),
-    :deep(.ant-menu-submenu-selected > .ant-menu-submenu-title) {
-      &:not(.ant-menu-item-selected.ant-menu-item-only-child) {
-        padding: 20px 16px 10px !important;
-      }
-    }
+  /* TODO: banyak kesalahan di selector dan style */
+  & :deep(li.ant-menu-item) {
+    padding: 4px 16px !important;
   }
 
-  /* TODO: banyak kesalahan di selector dan style */
+  & :deep(.ant-menu-item-group-title) {
+    color: #fff;
+    position: relative;
+    height: 10px;
+    margin-top: -5px !important;
+    margin-bottom: 5px !important;
+  }
+
+  & :deep(.ant-menu-item-selected),
+  & :deep(.ant-menu-submenu-selected .ant-menu-submenu-title),
+  & :deep(.ant-menu-item-selected .ant-typography),
+  & :deep(.ant-menu-submenu-selected .ant-menu-submenu-title .ant-typography) {
+    color: #6418c3;
+
+    /* TODO for child parent menu */
+    &.ant-menu-item-only-child {
+      background: #f8f8f8;
+      border-radius: 35% 0px 0px 35%;
+      padding: 20px 16px !important;
+
+      &:hover {
+        color: #6418c3;
+        background: #666cff0d;
+      }
+
+      &:before {
+        content: ' ';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: calc(100% - 1px);
+        height: 12px;
+        background: #fff;
+        z-index: 20;
+        border-radius: 0px 0px 20px 0px;
+      }
+
+      &:after {
+        content: ' ';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: calc(100% - 1px);
+        height: 12px;
+        background: #fff;
+        z-index: 20;
+        margin-top: 68px;
+        border-radius: 0px 20px 0px 0px;
+      }
+    }
+
+    &.ant-menu-item-only-child .point {
+      background: transparent;
+    }
+  }
 }
 </style>
