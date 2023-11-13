@@ -16,16 +16,12 @@ export default defineNuxtConfig({
       'shared/components',
     ],
   },
-  modules: [
-    '@nuxtjs/color-mode',
-    // '@pinia/nuxt',
-    '@unocss/nuxt',
-    '@vueuse/nuxt',
-    '@ant-design-vue/nuxt',
-    // '@hebilicious/vue-query-nuxt',
-  ],
+  modules: ['@nuxtjs/color-mode', // '@pinia/nuxt',
+    '@unocss/nuxt', '@vueuse/nuxt', // '@hebilicious/vue-query-nuxt',
+    '@ant-design-vue/nuxt', '@nuxt/image'],
   css: [
     'ant-design-vue/dist/reset.css',
+    '@/assets/font.css',
   ],
   colorMode: {
     classSuffix: '',

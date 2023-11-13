@@ -21,11 +21,11 @@ import { getData } from '~/utils/http/axiosHelper'
 //   return { key: KEY, api: API }
 // }
 
-async function fetchUsers(page: number) {
+async function fetchUsers(page: number, per_page: number) {
   const dataUsers = await getData({
     endpoint: FETCH_USERS(paramsToString({
       page,
-      per_page: 3,
+      per_page,
     })),
   })
 

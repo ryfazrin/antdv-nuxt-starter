@@ -1,0 +1,79 @@
+@font-face {
+  font-family: 'PFDinTextPro';
+  src: url('~/assets/font/PFDinTextPro-Thin.otf') format('opentype');
+  font-display: swap;
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PFDinTextPro';
+  src: url('~/assets/font/PFDinTextPro-Light.otf') format('opentype');
+  font-display: swap;
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PFDinTextPro';
+  src: url('~/assets/font/PFDinTextPro-Regular.otf') format('opentype');
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PFDinTextPro';
+  src: url('~/assets/font/PFDinTextPro-Medium.otf') format('opentype');
+  font-display: swap;
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PFDinTextPro';
+  src: url('~/assets/font/PFDinTextPro-Bold.otf') format('opentype');
+  font-display: swap;
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PFDinTextPro';
+  src: url('~/assets/font/PFDinTextPro-ThinItalic.otf') format('opentype');
+  font-display: swap;
+  font-weight: 100;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'PFDinTextPro';
+  src: url('~/assets/font/PFDinTextPro-LightItalic.otf') format('opentype');
+  font-display: swap;
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'PFDinTextPro';
+  src: url('~/assets/font/PFDinTextPro-Italic.otf') format('opentype');
+  font-display: swap;
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'PFDinTextPro';
+  src: url('~/assets/font/PFDinTextPro-MedItalic.otf') format('opentype');
+  font-display: swap;
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'PFDinTextPro';
+  src: url('~/assets/font/PFDinTextPro-BoldItal.otf') format('opentype');
+  font-display: swap;
+  font-weight: 700;
+  font-style: italic;
+}

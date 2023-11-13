@@ -1,9 +1,8 @@
 <script lang="ts" setup>
-import { Button } from 'ant-design-vue'
-import type { ColumnsType } from 'ant-design-vue/es/table'
-import { DeleteOutlined, EditOutlined, ExclamationCircleOutlined } from '@ant-design/icons-vue'
+import type { ColumnsType, TableProps } from 'ant-design-vue/es/table'
 import useGetList from '../composables/useGetList'
 import useDeleteUser from '../composables/useDeleteUser'
+import ButtonAction from '~/shared/components/ButtonAction.vue'
 
 const props = defineProps<{ handleOpenModal: (data: any) => void }>()
 
@@ -12,6 +11,8 @@ const {
   fetchQuery,
   dataModified,
   handlePageChange,
+  handleChangePageSize,
+  total,
 } = useGetList()
 
 const { isLoading, data } = fetchQuery
@@ -19,22 +20,10 @@ const { isLoading, data } = fetchQuery
 const { handleOnDelete } = useDeleteUser()
 
 // Func
-const showDeleteConfirm = (id: number) => {
-  Modal.confirm({
-    title: 'Are you sure delete this task?',
-    icon: h(ExclamationCircleOutlined),
-    content: 'Some descriptions',
-    okText: 'Yes',
-    okType: 'danger',
-    cancelText: 'No',
-    onOk() {
-      handleOnDelete(id)
-    },
-    onCancel() {
-      // eslint-disable-next-line no-console
-      console.log('Cancel')
-    },
-  })
+const onChangeTable: TableProps<any>['onChange'] = (
+  pagination,
+) => {
+  handlePageChange(pagination.current || 1)
 }
 
 // Columns
@@ -44,18 +33,25 @@ const columns: ColumnsType<any> = [
     key: 'action',
     width: '128px',
     customRender({ record }) {
-      return h('div', [
-        h(Button,
+      return h('div', {
+        style: {
+          display: 'flex',
+          justifyContent: 'center',
+          gap: '0.5em',
+        },
+      }, [
+        h(ButtonAction,
           {
-            onClick: () => showDeleteConfirm(record.id),
+            typeAction: 'remove',
+            onDelete: () => handleOnDelete(record.id),
           },
-          h(DeleteOutlined),
         ),
         h(
-          Button, {
+          ButtonAction,
+          {
+            typeAction: 'edit',
             onClick: () => props.handleOpenModal(record),
           },
-          h(EditOutlined),
         ),
       ])
     },
@@ -79,19 +75,16 @@ const columns: ColumnsType<any> = [
 </script>
 
 <template>
-  <a-table
+  <CustomTable
     :loading="isLoading"
     :columns="columns"
     :data-source="dataModified"
-    :pagination="{
-      total: data?.total,
-      pageSize: data?.per_page,
-      onChange(page, pageSize) {
-        handlePageChange(page)
-      },
-    }"
-  >
-    <!-- <template #bodyCell="{ column }">
+    :default-page-size="[6, 10, 12]"
+    :total="total"
+    @change="onChangeTable"
+    @change-page-size="handleChangePageSize"
+  />
+  <!-- <template #bodyCell="{ column }">
       <template v-if="column.key === 'action'">
         <a-popconfirm
           title="Are you sure delete this task?"
@@ -109,5 +102,4 @@ const columns: ColumnsType<any> = [
         </a-button>
       </template>
     </template> -->
-  </a-table>
 </template>
