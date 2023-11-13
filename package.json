@@ -1,6 +1,16 @@
 {
-  "name": "nuxt-app",
+  "name": "codeid-nuxt-template",
+  "version": "1.0.0-beta.1",
   "private": true,
+  "license": "UNLICENSED",
+  "author": {
+    "name": "Code.id Team",
+    "email": "pazrin@code.id",
+    "url": "https://code.id"
+  },
+  "contributors": [
+    "Pazrin <pazrin@code.id> (https://code.id/)"
+  ],
   "scripts": {
     "build": "cross-env NODE_ENV=production run-s gen:css build:nuxt",
     "build:nuxt": "nuxt build",
